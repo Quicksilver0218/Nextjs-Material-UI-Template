@@ -1,6 +1,5 @@
 "use client";
 
-import Box from "@mui/material/Box";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControl from "@mui/material/FormControl";
