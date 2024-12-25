@@ -6,11 +6,12 @@ import { useActionState, useState } from "react";
 import SampleFormHandler from "./sample-form-handler";
 import { LoadingButton } from "@mui/lab";
 import { validateForm } from "./sample-form-validator";
+import ControlledFileInput from "@/app/components/controlled-file-input";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);
   const [integer, setInteger] = useState("");
-  const [fileName, setFileName] = useState("");
+  const [files, setFiles] = useState<File[]>([]);
   const [serverFailedFields, formAction, pending] = useActionState(SampleFormHandler, new Set());
   const [clientFailedFields, setClientFailedFields] = useState(new Set<string>());
   const failedFields = ssv ? serverFailedFields : clientFailedFields;
@@ -56,17 +57,11 @@ export default function SampleForm() {
                 style={{ maxWidth: 300, borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
               >
                 Choose an image (≤ 1MB)
-                <input
-                  type="file"
+                <ControlledFileInput
                   name="image"
                   hidden
-                  onChange={(e) =>
-                    setFileName(
-                      (e.target as HTMLInputElement).files && (e.target as HTMLInputElement).files!.length > 0
-                        ? (e.target as HTMLInputElement).files![0].name
-                        : "",
-                    )
-                  }
+                  files={files}
+                  setFiles={setFiles}
                 />
               </Button>
             </Grid2>
@@ -78,7 +73,7 @@ export default function SampleForm() {
                 fullWidth
                 slotProps={{ input: { style: { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }} }}
                 placeholder="(No file selected)"
-                value={fileName}
+                value={files.length > 0 ? files[0].name : ""}
                 error={failedFields.has("imageSize") || failedFields.has("imageType")}
               />
             </Grid2>
