@@ -2,7 +2,7 @@
 
 import { Box, Button, Grid2, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import SampleFormHandler from "./sample-form-handler";
 import { LoadingButton } from "@mui/lab";
 import { validateForm } from "./sample-form-validator";
@@ -13,8 +13,11 @@ export default function SampleForm() {
   const [integer, setInteger] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [serverFailedFields, formAction, pending] = useActionState(SampleFormHandler, new Set());
-  const [clientFailedFields, setClientFailedFields] = useState(new Set<string>());
-  const failedFields = ssv ? serverFailedFields : clientFailedFields;
+  const [failedFields, setFailedFields] = useState(new Set());
+
+  useEffect(() => {
+    setFailedFields(serverFailedFields);
+  }, [serverFailedFields]);
   
   return (
     <Box
@@ -25,12 +28,14 @@ export default function SampleForm() {
       method="POST"
       encType="multipart/form-data"
       action={formAction}
-      onSubmit={ssv ? undefined : async (e) => {
+      onSubmit={ssv ? undefined : e => {
         e.preventDefault();
-        setClientFailedFields(validateForm(new FormData(e.target as HTMLFormElement)));
+        setFailedFields(validateForm(new FormData(e.target as HTMLFormElement)));
       }}
     >
-      Client-side Validation <Switch checked={ssv} onChange={(e) => setSsv(e.target.checked)} /> Server-side Validation
+      Client-side Validation
+      <Switch checked={ssv} onChange={e => { setSsv(e.target.checked); setFailedFields(new Set()); }} />
+      Server-side Validation
       <Grid2 container spacing={2}>
         <Grid2 size={{xs: "auto"}}>
           <TextField
@@ -39,7 +44,7 @@ export default function SampleForm() {
             name="integer"
             placeholder="Input an unsigned integer"
             value={integer}
-            onChange={(e) => setInteger(e.target.value)}
+            onChange={e => setInteger(e.target.value)}
             error={failedFields.has("integer")}
             helperText={failedFields.has("integer") ? "Please input an unsigned integer." : undefined}
           />

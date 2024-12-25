@@ -19,7 +19,7 @@ export default function AccumulatorForm() {
         <Grid2 container spacing={2}>
           <Grid2 size={{xs: "auto"}}>
             <FormControl sx={{ width: 120 }}>
-              <OutlinedInput type="number" size="small" value={num} onChange={(e) => setNum(e.target.value)} placeholder="Number" />
+              <OutlinedInput type="number" size="small" value={num} onChange={e => setNum(e.target.value)} placeholder="Number" />
             </FormControl>
           </Grid2>
           <Grid2 size={{xs: "auto"}}>

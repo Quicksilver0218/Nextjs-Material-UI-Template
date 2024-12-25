@@ -16,6 +16,6 @@ export default function ControlledFileInput(props: InputHTMLAttributes<HTMLInput
   });
   const { type, files, setFiles: setfiles, ...rest } = props;
   return (
-    <input type="file" ref={ref} onChange={(e) => props.setFiles([...e.target.files!])} {...rest} />
+    <input type="file" ref={ref} onChange={e => props.setFiles([...e.target.files!])} {...rest} />
   );
 }
