@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.scss";
 import { locales } from "@/middleware";
 import { headers } from "next/headers";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { roboto_mono } from "@/app/fonts";
 import theme from "@/app/theme";
 import StateProvider from "@/app/components/state-provider";
+import "./globals.scss";
 
 export async function generateMetadata(
   {}: {
@@ -53,7 +54,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={(await params).lang}>
-      <body>
+      <body className={roboto_mono.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />

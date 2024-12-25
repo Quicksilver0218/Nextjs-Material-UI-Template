@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 
 export default function AccumulatorForm() {
   const { state, dispatch } = useContext(store);
-  const [num, setNum] = useState('');
+  const [num, setNum] = useState("");
   return (
     <Box sx={{ p: 2 }}>
       <Typography variant="body1" gutterBottom>
@@ -30,12 +30,12 @@ export default function AccumulatorForm() {
           <Grid2 size={{xs: "auto"}}>
             <Button variant="contained" size="large" color="success" onClick={() => dispatch({ type: Accumulator.ActionType.INCREMENT })}>
               +
-            </Button>{' '}
+            </Button>{" "}
           </Grid2>
           <Grid2 size={{xs: "auto"}}>
             <Button variant="contained" size="large" color="error" onClick={() => dispatch({ type: Accumulator.ActionType.DECREMENT })}>
               -
-            </Button>{' '}
+            </Button>{" "}
           </Grid2>
           <Grid2 size={{xs: "auto"}}>
             <Button variant="contained" size="large" color="warning" onClick={() => dispatch({ type: Accumulator.ActionType.RESET })}>

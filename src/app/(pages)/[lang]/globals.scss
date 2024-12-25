@@ -46,5 +46,6 @@ ol, ul {
 }
 
 code {
-  font-family: consolas, monospace;
+  font-family: var(--font-roboto-mono), monospace;
+  color: var(--mui-palette-warning-main);
 }

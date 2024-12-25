@@ -1,6 +1,6 @@
-import { getDictionary } from '@/app/dictionaries';
-import { Home } from '@mui/icons-material';
-import { Box, Button, Typography } from '@mui/material';
+import getDictionary from "@/app/dictionaries";
+import { Home } from "@mui/icons-material";
+import { Box, Button, Typography } from "@mui/material";
  
 export default async function Page({ params }: { params: Promise<{
   lang: string

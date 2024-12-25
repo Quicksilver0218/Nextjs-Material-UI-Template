@@ -21,4 +21,4 @@ export default function LocaleSelect({ locale }: { locale: string }) {
       </Select>
     </FormControl>
   );
-}
+};
