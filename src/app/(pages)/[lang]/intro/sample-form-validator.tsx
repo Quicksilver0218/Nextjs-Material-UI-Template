@@ -1,4 +1,4 @@
-import rules from "./sample-form-validation-rules.json";
+import rules from "./sample-form-validation-rules.yml";
 import { Validator } from "@quicksilver0218/object-validator";
 
 const validator = new Validator(rules);

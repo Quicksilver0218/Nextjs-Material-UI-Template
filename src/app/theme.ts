@@ -14,29 +14,50 @@ export default createTheme({
   },
   components: {
     MuiTypography: {
-      styleOverrides: {
-        h1: {
-          marginTop: "1.1em",
+      variants: [
+        {
+          props: { component: "h1" },
+          style: {
+            marginTop: "1.04em",
+          },
         },
-        h2: {
-          marginTop: "1.05em",
+        {
+          props: { component: "h2" },
+          style: {
+            marginTop: "1em",
+          },
         },
-        h3: {
-          marginTop: "1em",
+        {
+          props: { component: "h3" },
+          style: {
+            marginTop: ".96em",
+          },
         },
-        h4: {
-          marginTop: ".95em",
+        {
+          props: { component: "h4" },
+          style: {
+            marginTop: ".92em",
+          },
         },
-        h5: {
-          marginTop: ".9em",
+        {
+          props: { component: "h5" },
+          style: {
+            marginTop: ".88em",
+          },
         },
-        h6: {
-          marginTop: ".85em",
+        {
+          props: { component: "h6" },
+          style: {
+            marginTop: ".84em",
+          },
         },
-        body1: {
-          marginTop: ".8em",
-        },
-      }
+        {
+          props: { component: "p" },
+          style: {
+            marginTop: ".8em",
+          },
+        }
+      ]
     },
   },
 });

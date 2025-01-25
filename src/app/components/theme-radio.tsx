@@ -13,10 +13,8 @@ export default function ThemeRadio() {
     return null;
   return (
     <FormControl>
-      <FormLabel id="demo-theme-toggle">Theme</FormLabel>
+      <FormLabel>Theme</FormLabel>
       <RadioGroup
-        aria-labelledby="demo-theme-toggle"
-        name="theme-toggle"
         row
         value={mode}
         onChange={(event) =>

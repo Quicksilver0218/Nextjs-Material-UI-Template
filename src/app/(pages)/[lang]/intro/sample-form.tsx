@@ -4,7 +4,6 @@ import { Box, Button, Grid2, Switch, TextField, Typography } from "@mui/material
 import { CloudUpload } from "@mui/icons-material";
 import { useActionState, useEffect, useState } from "react";
 import SampleFormHandler from "./sample-form-handler";
-import { LoadingButton } from "@mui/lab";
 import { validateForm } from "./sample-form-validator";
 import ControlledFileInput from "@/app/components/controlled-file-input";
 
@@ -90,14 +89,14 @@ export default function SampleForm() {
           </div>
         </Grid2>
         <Grid2 size={{xs: "auto"}}>
-          <LoadingButton
+          <Button
             size="large"
             variant="contained"
             type="submit"
             loading={pending}
           >
             Submit
-          </LoadingButton>
+          </Button>
         </Grid2>
       </Grid2>
     </Box>

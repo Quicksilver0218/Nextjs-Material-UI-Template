@@ -1,0 +1,21 @@
+- condition:
+    type: and
+    field: integer
+    conditions:
+    - type: "!null"
+    - type: regex
+      arg: "^[0-9]+$"
+- condition:
+    type: and
+    field: imageType
+    conditions:
+    - type: "!null"
+    - type: regex
+      arg: "^image/.+$"
+- condition:
+    type: and
+    field: imageSize
+    conditions:
+    - type: "!null"
+    - type: range
+      arg: 1048576]
