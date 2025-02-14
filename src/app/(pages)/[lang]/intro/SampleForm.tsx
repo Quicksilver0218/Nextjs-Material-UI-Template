@@ -5,7 +5,7 @@ import { CloudUpload } from "@mui/icons-material";
 import { useActionState, useEffect, useState } from "react";
 import SampleFormHandler from "./sample-form-handler";
 import { validateForm } from "./sample-form-validator";
-import ControlledFileInput from "@/app/components/controlled-file-input";
+import ControlledFileInput from "@/app/components/ControlledFileInput";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);

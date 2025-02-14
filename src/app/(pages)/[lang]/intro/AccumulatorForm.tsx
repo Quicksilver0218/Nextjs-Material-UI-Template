@@ -1,7 +1,7 @@
 "use client";
 
 import * as Accumulator from "@/lib/state/action/accumulator";
-import { store } from "@/app/components/state-provider";
+import { store } from "@/app/components/StateProvider";
 import { Box, Button, FormControl, Grid2, OutlinedInput, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 

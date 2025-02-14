@@ -6,7 +6,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { roboto_mono } from "@/app/fonts";
 import theme from "@/app/theme";
-import StateProvider from "@/app/components/state-provider";
+import StateProvider from "@/app/components/StateProvider";
 import "./globals.scss";
 
 export async function generateMetadata(

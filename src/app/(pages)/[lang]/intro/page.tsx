@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import styles from "./page.module.scss";
 import getDictionary from "@/app/dictionaries";
 import { Box, Container, Grid2, Link, Typography } from "@mui/material";
-import LocaleSelect from "../../../components/locale-select";
-import AccumulatorForm from "./accumulator-form";
-import SampleForm from "./sample-form";
-import ThemeRadio from "@/app/components/theme-radio";
+import LocaleSelect from "../../../components/LocaleSelect";
+import AccumulatorForm from "./AccumulatorForm";
+import SampleForm from "./SampleForm";
+import ThemeRadio from "@/app/components/ThemeRadio";
 
 export const metadata: Metadata = {
   title: "Next.js Material UI Template",
@@ -33,7 +33,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         </Link>
         .
       </Typography>
-      <Typography component="p">Next.js Version: 15.1.6</Typography>
+      <Typography component="p">Next.js Version: 15.1.7</Typography>
       <Box sx={{marginTop: 2}}>
         <hr />
       </Box>
@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       </Typography>
       <ThemeRadio />
       <Typography component="p">
-        If you don't need Material UI, you can make the changes below.
+        If you do not need Material UI, you can make the changes below.
       </Typography>
       <ul>
         <li>
@@ -124,7 +124,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         <Link href="https://www.npmjs.com/package/yaml-loader" target="_blank" rel="noreferrer nooppener">
           yaml-loader
         </Link>{" "}
-        is used to parse YAML files. If you don't use YAML, you can make the changes below.
+        is used to parse YAML files. If you do not use YAML, you can make the changes below.
       </Typography>
       <ul>
         <li>Remove all YAML-related turbo rules in <code>next.config.ts</code>.</li>
@@ -237,8 +237,11 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <Typography variant="h6" component="h6">File Name</Typography>
       <ol>
         <li>
-          Use hyphen delimited strings with lower case. e.g. <code>intro-form.ts</code>. However, the default files
-          from Next.js are kept for your convenience.
+          Use Pascal case for React component files except pages so that they can be consistent with Material UI.
+          e.g. <code>SampleForm.tsx</code>.
+        </li>
+        <li>
+          Use hyphen delimited strings with lower case for other files. e.g. <code>sample-form-handler.ts</code>.
         </li>
       </ol>
       <Typography variant="h6" component="h6">Spacing</Typography>
