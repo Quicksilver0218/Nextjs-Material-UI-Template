@@ -6,6 +6,8 @@ import { useActionState, useEffect, useState } from "react";
 import SampleFormHandler from "../_lib/sample-form-handler";
 import { validateForm } from "../_lib/sample-form-validator";
 import ControlledFileInput from "@/components/ControlledFileInput";
+import SharpCornersButton from "@/components/SharpCornersButton";
+import SharpCornersOutlinedInput from "@/components/SharpCornersOutlinedInput";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);
@@ -49,14 +51,15 @@ export default function SampleForm() {
         <Grid2 size={{xs: "grow"}}>
           <Grid2 container>
             <Grid2 size={{xs: "auto"}} display="flex" alignItems="stretch">
-              <Button
+              <SharpCornersButton
                 variant="contained"
                 color="secondary"
                 component="label"
                 role={undefined}
                 tabIndex={-1}
                 startIcon={<CloudUpload />}
-                style={{ maxWidth: 300, borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
+                rightCornersSharp
+                style={{ maxWidth: 300 }}
               >
                 Choose an image (≤ 1MB)
                 <ControlledFileInput
@@ -65,15 +68,14 @@ export default function SampleForm() {
                   files={files}
                   setFiles={setFiles}
                 />
-              </Button>
+              </SharpCornersButton>
             </Grid2>
             <Grid2 size={{xs: "grow"}}>
-              <TextField
+              <SharpCornersOutlinedInput
                 size="small"
-                variant="outlined"
                 disabled
                 fullWidth
-                slotProps={{ input: { style: { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }} }}
+                leftCornersSharp
                 placeholder="(No file selected)"
                 value={files.length > 0 ? files[0].name : ""}
                 error={failedFields.has("imageSize") || failedFields.has("imageType")}
