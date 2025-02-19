@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import styles from "./page.module.scss";
 import getDictionary from "@/app/dictionaries";
 import { Box, Container, Grid2, Link, Typography } from "@mui/material";
-import LocaleSelect from "../../../components/LocaleSelect";
-import AccumulatorForm from "./AccumulatorForm";
-import SampleForm from "./SampleForm";
-import ThemeRadio from "@/app/components/ThemeRadio";
+import LocaleSelect from "../../../../components/LocaleSelect";
+import AccumulatorForm from "./_components/AccumulatorForm";
+import SampleForm from "./_components/SampleForm";
+import ThemeRadio from "@/components/ThemeRadio";
 
 export const metadata: Metadata = {
   title: "Next.js Material UI Template",
@@ -189,21 +189,25 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
       <Typography variant="h4" component="h4">Directory Structure</Typography>
       <Typography component="p">All the default directories from Next.js are kept. The{" "}
         <Link href="https://nextjs.org/docs/app/getting-started/project-structure#src-directory" target="_blank" rel="noreferrer nooppener">
-          <code>/src</code> directory approach
+          <code>/src</code> directory
         </Link>{" "}
-        with{" "}
+        and{" "}
+        <Link href="https://nextjs.org/docs/app/getting-started/project-structure#split-project-files-by-feature-or-route" target="_blank" rel="noreferrer nooppener">
+          split project files by feature or route
+        </Link>{" "}
+        approaches with{" "}
         <Link href="https://nextjs.org/docs/app" target="_blank" rel="noreferrer nooppener">
           App Router
         </Link>{" "}
-        is used. Extra directories are listed below:</Typography>
-      <Typography variant="h5" component="h5">src/app/components</Typography>
+        are used. Extra directories are listed below:</Typography>
+      <Typography variant="h5" component="h5">src/components</Typography>
       <Typography component="p">Contains common React components for using in different pages.</Typography>
       <Typography variant="h5" component="h5">src/app/(pages)</Typography>
       <Typography component="p">A{" "}
         <Link href="https://nextjs.org/docs/app/getting-started/project-structure#route-groups" target="_blank" rel="noreferrer nooppener">
           route group
         </Link>{" "}
-        for all pages. Other route groups can be added under <code>src/app</code>.
+        for all pages. Other route groups (e.g. <code>(api)</code>) can be added under <code>src/app</code>.
       </Typography>
       <Typography variant="h5" component="h5">src/dictionaries</Typography>
       <Typography component="p">

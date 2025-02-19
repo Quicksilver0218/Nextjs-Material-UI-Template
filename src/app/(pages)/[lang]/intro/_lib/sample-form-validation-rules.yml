@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Quicksilver0218/Object-Validator/refs/heads/main/validation-rules-schema.json
 - condition:
     type: and
     field: integer

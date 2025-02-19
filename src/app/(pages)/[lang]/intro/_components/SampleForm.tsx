@@ -3,9 +3,9 @@
 import { Box, Button, Grid2, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { useActionState, useEffect, useState } from "react";
-import SampleFormHandler from "./sample-form-handler";
-import { validateForm } from "./sample-form-validator";
-import ControlledFileInput from "@/app/components/ControlledFileInput";
+import SampleFormHandler from "../_lib/sample-form-handler";
+import { validateForm } from "../_lib/sample-form-validator";
+import ControlledFileInput from "@/components/ControlledFileInput";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);
@@ -24,8 +24,6 @@ export default function SampleForm() {
       component="form"
       noValidate
       autoComplete="off"
-      method="POST"
-      encType="multipart/form-data"
       action={formAction}
       onSubmit={ssv ? undefined : e => {
         e.preventDefault();
@@ -90,10 +88,10 @@ export default function SampleForm() {
         </Grid2>
         <Grid2 size={{xs: "auto"}}>
           <Button
-            size="large"
             variant="contained"
             type="submit"
             loading={pending}
+            style={{ height: 40 }}
           >
             Submit
           </Button>
