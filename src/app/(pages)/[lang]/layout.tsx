@@ -4,8 +4,8 @@ import { headers } from "next/headers";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { roboto_mono } from "@/app/fonts";
-import theme from "@/app/theme";
+import { roboto_mono } from "@/lib/fonts";
+import theme from "@/lib/theme";
 import StateProvider from "@/components/StateProvider";
 import "./globals.scss";
 
