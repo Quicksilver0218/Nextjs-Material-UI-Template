@@ -287,6 +287,20 @@ export default async function Page({
         </li>
       </ul>
       <Typography variant="h5" component="h5">
+        Backend
+      </Typography>
+      <ul>
+        <li>
+          <Link
+            href="https://www.npmjs.com/package/negotiator"
+            target="_blank"
+            rel="noreferrer nooppener"
+          >
+            negotiator
+          </Link>
+        </li>
+      </ul>
+      <Typography variant="h5" component="h5">
         Input Validation
       </Typography>
       <ul>
@@ -297,6 +311,34 @@ export default async function Page({
             rel="noreferrer nooppener"
           >
             Object-Validator
+          </Link>
+        </li>
+      </ul>
+      <Typography variant="h5" component="h5">
+        Internationalization
+      </Typography>
+      <ul>
+        <li>
+          <Link
+            href="https://www.npmjs.com/package/@formatjs/intl-localematcher"
+            target="_blank"
+            rel="noreferrer nooppener"
+          >
+            Intl LocaleMatcher
+          </Link>
+        </li>
+      </ul>
+      <Typography variant="h5" component="h5">
+        Data Interchange
+      </Typography>
+      <ul>
+        <li>
+          <Link
+            href="https://www.npmjs.com/package/yaml-loader"
+            target="_blank"
+            rel="noreferrer nooppener"
+          >
+            yaml-loader
           </Link>
         </li>
       </ul>
@@ -552,7 +594,7 @@ export default async function Page({
         </li>
       </ol>
       <Typography variant="h6" component="h6">
-        Element Class
+        Element Class Name Attribute
       </Typography>
       <ol>
         <li>
@@ -585,7 +627,7 @@ export default async function Page({
       </Box>
       <Typography component="p">
         <small>
-          Copyright © 2024 Quicksilver0218.
+          Copyright © 2025 Quicksilver0218.
           <br />
           Licensed under the MIT License.
         </small>
