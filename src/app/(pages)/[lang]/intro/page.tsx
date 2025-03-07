@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import styles from "./page.module.scss";
 import getDictionary from "@/lib/utils/dictionaries";
 import { Box, Container, Grid2, Link, Typography } from "@mui/material";
-import LocaleSelect from "../../../../components/LocaleSelect";
+import LocaleSelect from "@/components/LocaleSelect";
 import AccumulatorForm from "./_components/AccumulatorForm";
 import SampleForm from "./_components/SampleForm";
 import ThemeRadio from "@/components/ThemeRadio";
