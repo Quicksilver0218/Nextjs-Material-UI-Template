@@ -198,7 +198,7 @@ export default async function Page({
       </Typography>
       <ul>
         <li>
-          Remove all YAML-related turbo rules in <code>next.config.ts</code>.
+          Remove all YAML-related configurations in <code>next.config.ts</code>.
         </li>
         <li>
           Delete <code>src/yaml.d.ts</code>.

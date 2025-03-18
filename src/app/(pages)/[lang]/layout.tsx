@@ -9,13 +9,7 @@ import theme from "@/lib/theme";
 import StateProvider from "@/components/StateProvider";
 import "./globals.scss";
 
-export async function generateMetadata(
-  {}: {
-    params: Promise<{ id: string }>
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-  },
-  // parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const url = new URL((await headers()).get("x-url")!);
   let canonical = url.pathname + url.search;
   for (const locale of locales)
