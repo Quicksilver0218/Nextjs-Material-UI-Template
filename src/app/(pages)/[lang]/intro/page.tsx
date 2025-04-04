@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import styles from "./page.module.scss";
 import getDictionary from "@/lib/utils/dictionaries";
-import { Box, Container, Grid2, Link, Typography } from "@mui/material";
+import { Box, Container, Grid, Link, Typography } from "@mui/material";
 import LocaleSelect from "@/components/LocaleSelect";
 import AccumulatorForm from "./_components/AccumulatorForm";
 import SampleForm from "./_components/SampleForm";
@@ -47,7 +47,7 @@ export default async function Page({
         </Link>
         .
       </Typography>
-      <Typography component="p">Next.js Version: 15.2.1</Typography>
+      <Typography component="p">Next.js Version: 15.2.4</Typography>
       <Box sx={{ marginTop: 2 }}>
         <hr />
       </Box>
@@ -113,16 +113,16 @@ export default async function Page({
         <br />
         The below message is displayed with translation:
       </Typography>
-      <Grid2 container spacing={2} p={2}>
-        <Grid2 size={{ xs: "auto" }}>
+      <Grid container spacing={2} p={2}>
+        <Grid size={{ xs: "auto" }}>
           <LocaleSelect locale={lang} />
-        </Grid2>
-        <Grid2 size={{ xs: "auto" }} display="flex" alignItems="center">
+        </Grid>
+        <Grid size={{ xs: "auto" }} display="flex" alignItems="center">
           <Typography variant="subtitle1" color="secondary">
             {dict["HelloWorld"]}
           </Typography>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
       <Typography variant="h5" component="h5">
         Global State Management System
       </Typography>

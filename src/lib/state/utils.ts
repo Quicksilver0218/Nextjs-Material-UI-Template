@@ -1,12 +1,13 @@
 import { Reducer } from "react";
 import IAction from "./action";
 
-export const combineReducers = (reducerMap: {
-  [key: string]: Reducer<any, IAction>;
-}): Reducer<any, IAction> => {
-  return (state: any, action: IAction) => {
+export function combineReducers<T> (reducerMap: {
+  [Property in keyof T]: Reducer<T[Property], IAction>;
+}): Reducer<T, IAction> {
+  return (state: T, action: IAction) => {
     const newState = { ...state };
-    Object.keys(reducerMap).forEach((key) => (newState[key] = reducerMap[key](state[key], action)));
+    for (const key in reducerMap)
+      newState[key] = reducerMap[key](state[key], action);
     return newState;
   };
 };

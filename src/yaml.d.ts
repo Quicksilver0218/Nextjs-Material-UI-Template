@@ -1,4 +1,4 @@
-const o: any;
+const o: unknown;
 
 declare module '*.yml' {
     export default o;

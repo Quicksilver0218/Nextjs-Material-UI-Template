@@ -4,7 +4,7 @@ import * as Accumulator from "./action/accumulator";
 import { combineReducers } from "./utils";
 
 // Implement your reducers here
-const accumulatorReducer = (accumulator: number, action: IAction) => {
+function accumulatorReducer (accumulator: number, action: IAction) {
   switch (action.type) {
     case Accumulator.ActionType.INCREMENT:
       return accumulator + 1;
@@ -19,7 +19,7 @@ const accumulatorReducer = (accumulator: number, action: IAction) => {
   }
 };
 
-const changeCountReducer = (changeCount: number, action: IAction) => {
+function changeCountReducer (changeCount: number, action: IAction) {
   switch (action.type) {
     case Accumulator.ActionType.INCREMENT:
     case Accumulator.ActionType.DECREMENT:

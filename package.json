@@ -12,15 +12,15 @@
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@formatjs/intl-localematcher": "^0.6.0",
-    "@mui/icons-material": "^6.4.7",
-    "@mui/material": "^6.4.7",
-    "@mui/material-nextjs": "^6.4.3",
+    "@formatjs/intl-localematcher": "^0.6.1",
+    "@mui/icons-material": "^7.0.1",
+    "@mui/material": "^7.0.1",
+    "@mui/material-nextjs": "^7.0.0",
     "@quicksilver0218/object-validator": "^2.1.1",
     "negotiator": "^1.0.0",
-    "next": "15.2.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -29,8 +29,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.1",
-    "sass": "^1.85.1",
+    "eslint-config-next": "15.2.4",
+    "sass": "^1.86.3",
     "typescript": "^5",
     "yaml-loader": "^0.8.1"
   }

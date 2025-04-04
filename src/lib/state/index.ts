@@ -1,5 +1,5 @@
 export interface IState {
-  [key: string]: any;
+  [key: string]: unknown;
   // Shape your state here
   accumulator: number;
   changeCount: number;

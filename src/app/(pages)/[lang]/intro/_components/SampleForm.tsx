@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Grid2, Switch, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
 import { useActionState, useEffect, useState } from "react";
 import SampleFormHandler from "../_lib/sample-form-handler";
@@ -35,8 +35,8 @@ export default function SampleForm() {
       Client-side Validation
       <Switch checked={ssv} onChange={e => { setSsv(e.target.checked); setFailedFields(new Set()); }} />
       Server-side Validation
-      <Grid2 container spacing={2}>
-        <Grid2 size={{xs: "auto"}}>
+      <Grid container spacing={2}>
+        <Grid size={{xs: "auto"}}>
           <TextField
             size="small"
             type="text"
@@ -47,10 +47,10 @@ export default function SampleForm() {
             error={failedFields.has("integer")}
             helperText={failedFields.has("integer") ? "Please input an unsigned integer." : undefined}
           />
-        </Grid2>
-        <Grid2 size={{xs: "grow"}}>
-          <Grid2 container>
-            <Grid2 size={{xs: "auto"}} display="flex" alignItems="stretch">
+        </Grid>
+        <Grid size={{xs: "grow"}}>
+          <Grid container>
+            <Grid size={{xs: "auto"}} display="flex" alignItems="stretch">
               <SharpCornersButton
                 variant="contained"
                 color="secondary"
@@ -69,8 +69,8 @@ export default function SampleForm() {
                   setFiles={setFiles}
                 />
               </SharpCornersButton>
-            </Grid2>
-            <Grid2 size={{xs: "grow"}}>
+            </Grid>
+            <Grid size={{xs: "grow"}}>
               <SharpCornersOutlinedInput
                 size="small"
                 disabled
@@ -80,15 +80,15 @@ export default function SampleForm() {
                 value={files.length > 0 ? files[0].name : ""}
                 error={failedFields.has("imageSize") || failedFields.has("imageType")}
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
           <div>
             <Typography variant="caption" color="error">
               {failedFields.has("imageSize") ? "File size must be ≤ 1MB." : failedFields.has("imageType")? "Please choose an image file." : undefined}
             </Typography>
           </div>
-        </Grid2>
-        <Grid2 size={{xs: "auto"}}>
+        </Grid>
+        <Grid size={{xs: "auto"}}>
           <Button
             variant="contained"
             type="submit"
@@ -97,8 +97,8 @@ export default function SampleForm() {
           >
             Submit
           </Button>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

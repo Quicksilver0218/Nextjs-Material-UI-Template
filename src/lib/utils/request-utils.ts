@@ -1,9 +1,9 @@
-export function deleteUndefinedKeys(obj: any) {
+export function deleteUndefinedKeys(obj: { [key: string]: unknown }) {
   Object.keys(obj).forEach(key => {
     if (obj[key] === undefined)
       delete obj[key];
     else if (typeof obj[key] === "object")
-      deleteUndefinedKeys(obj[key]);
+      deleteUndefinedKeys(obj[key] as { [key: string]: unknown });
   });
 }
 
@@ -31,6 +31,6 @@ export function createJsonRequest(url: string, method: string, headers?: Headers
   if (method.toUpperCase() === "GET")
     throw new Error("GET requests cannot have a body.");
   if (body !== undefined)
-		deleteUndefinedKeys(body);
+		deleteUndefinedKeys(body as { [key: string]: unknown });
   return new Request(url, { method, headers: { "Content-Type": "application/json", ...headers }, body: JSON.stringify(body) });
 }
