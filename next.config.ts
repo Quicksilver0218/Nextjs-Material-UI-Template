@@ -6,16 +6,16 @@ const yamlRule = {
 };
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    rules: {
+      "*.yml": yamlRule,
+      "*.yaml": yamlRule,
+    }
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: "5mb",
-    },
-    turbo: {
-      rules: {
-        "*.yml": yamlRule,
-        "*.yaml": yamlRule,
-      },
-    },
+    }
   },
   webpack: config => {
     config.module.rules.push({

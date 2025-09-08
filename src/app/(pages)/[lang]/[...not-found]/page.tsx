@@ -1,6 +1,7 @@
 import getDictionary from "@/lib/utils/dictionaries";
 import { Home } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
  
 export default async function Page({ params }: { params: Promise<{
   lang: string
@@ -11,7 +12,7 @@ export default async function Page({ params }: { params: Promise<{
       <div>
         <Typography variant="h1" align="center" marginTop={0}>{dict["PageNotFound"]}</Typography>
         <Box display="flex" justifyContent="center" marginTop={2}>
-          <Button href="/" variant="contained" size="large" startIcon={<Home />} style={{ minWidth: 180 }}>
+          <Button LinkComponent={Link} href="/" variant="contained" size="large" startIcon={<Home />} style={{ minWidth: 180 }}>
             {dict["BackToHome"]}
           </Button>
         </Box>
