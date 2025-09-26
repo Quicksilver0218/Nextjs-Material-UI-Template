@@ -7,30 +7,32 @@ export function deleteUndefinedKeys(obj: { [key: string]: unknown }) {
   });
 }
 
-export function createGetRequest(url: string, headers?: HeadersInit, params?: {[key: string]: string | string[]}) {
+export function createGetRequest(url: string, data?: { headers?: HeadersInit, params?: {[key: string]: string | string[] | undefined} }) {
   let paramsStr;
-	if (params !== undefined) {
+  const params = data?.params;
+	if (params) {
 		deleteUndefinedKeys(params);
     const searchParams = new URLSearchParams();
     Object.keys(params).forEach(key => {
       if (Array.isArray(params[key]))
         params[key].forEach((item: string) => searchParams.append(key + "[]", item));
       else
-        searchParams.append(key, params[key]);
+        searchParams.append(key, params[key]!);
     });
     paramsStr = "?" + searchParams.toString();
   } else
     paramsStr = "";
   return new Request(url + paramsStr, {
-    headers,
+    headers: data?.headers,
     method: "GET"
   });
 }
 
-export function createJsonRequest(url: string, method: string, headers?: HeadersInit, body?: object) {
+export function createJsonRequest(url: string, method: string, data?: { headers?: HeadersInit, body?: object }) {
   if (method.toUpperCase() === "GET")
     throw new Error("GET requests cannot have a body.");
+  const body = data?.body;
   if (body !== undefined)
 		deleteUndefinedKeys(body as { [key: string]: unknown });
-  return new Request(url, { method, headers: { "Content-Type": "application/json", ...headers }, body: JSON.stringify(body) });
+  return new Request(url, { method, headers: { "Content-Type": "application/json", ...data?.headers }, body: JSON.stringify(body) });
 }

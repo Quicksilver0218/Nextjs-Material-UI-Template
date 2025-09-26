@@ -65,14 +65,11 @@ export async function onSubmit(
         request.body = searchString;
         break;
     }
-  const promise = fetch(url, request);
-  promise.then((res) => {
+  fetch(url, request).then((res) => {
     if (typeof options.success === "function") options.success(res);
-  });
-  promise.catch((reason) => {
+  }).catch((reason) => {
     if (typeof options.fail === "function") options.fail(reason);
-  });
-  promise.finally(() => {
+  }).finally(() => {
     if (typeof options.complete === "function") options.complete();
   });
 }

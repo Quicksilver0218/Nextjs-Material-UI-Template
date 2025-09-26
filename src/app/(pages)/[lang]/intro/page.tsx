@@ -47,7 +47,7 @@ export default async function Page({
         </Link>
         .
       </Typography>
-      <Typography component="p">Next.js Version: 15.5.2</Typography>
+      <Typography component="p">Next.js Version: 15.5.4</Typography>
       <Box sx={{ marginTop: 2 }}>
         <hr />
       </Box>
