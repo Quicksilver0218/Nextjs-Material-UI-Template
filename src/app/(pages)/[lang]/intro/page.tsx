@@ -136,6 +136,22 @@ export default async function Page({
         with <code>NODE_ENV=production</code>. Please note that the reducer will
         be called twice for each action in non-production mode.
       </Typography>
+      <Typography component="p">
+        If you do not need the Global State Management System, you can make the
+        changes below.
+      </Typography>
+      <ul>
+        <li>
+          In <code>src/app/(pages)/[lang]/layout.tsx</code>, remove the{" "}
+          <code>StateProvider</code> component.
+        </li>
+        <li>
+          Delete <code>src/components/StateProvider.tsx</code>.
+        </li>
+        <li>
+          Delete <code>src/lib/state</code>.
+        </li>
+      </ul>
       <Typography variant="h5" component="h5">
         Server-side Form Validation
       </Typography>
@@ -179,7 +195,14 @@ export default async function Page({
           Delete <code>src/lib/theme.ts</code>.
         </li>
         <li>
-          Uninstall all packages with the name starting with <code>@mui/</code>.
+          Uninstall all packages with the name starting with <code>@mui/</code>{" "}
+          or <code>@emotion/</code>.
+        </li>
+        <li>
+          Delete or replace the components <code>LocaleSelect.tsx</code>,{" "}
+          <code>SharpCornersButton.tsx</code>,{" "}
+          <code>SharpCornersOutlinedInput.tsx</code> and{" "}
+          <code>ThemeRadio.tsx</code> under <code>src/components</code>.
         </li>
       </ul>
       <Typography variant="h5" component="h5">
