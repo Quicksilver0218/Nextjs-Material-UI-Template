@@ -5,6 +5,7 @@ export function deleteUndefinedKeys(obj: { [key: string]: unknown }) {
     else if (typeof obj[key] === "object")
       deleteUndefinedKeys(obj[key] as { [key: string]: unknown });
   });
+  return obj;
 }
 
 export function createGetRequest(url: string, data?: { headers?: HeadersInit, params?: {[key: string]: string | string[] | undefined} }) {

@@ -1,22 +1,5 @@
-import getDictionary from "@/lib/utils/dictionaries";
-import { Home } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
-import Link from "next/link";
+import Root from "./Root";
  
-export default async function Page({ params }: { params: Promise<{
-  lang: string
-}> }) {
-  const dict = await getDictionary((await params).lang);
-  return (
-    <Box height="100vh" display="flex" justifyContent="center" alignItems="center">
-      <div>
-        <Typography variant="h1" align="center" marginTop={0}>{dict["PageNotFound"]}</Typography>
-        <Box display="flex" justifyContent="center" marginTop={2}>
-          <Button LinkComponent={Link} href="/" variant="contained" size="large" startIcon={<Home />} style={{ minWidth: 180 }}>
-            {dict["BackToHome"]}
-          </Button>
-        </Box>
-      </div>
-    </Box>
-  );
+export default function Page() {
+  return <Root />
 };

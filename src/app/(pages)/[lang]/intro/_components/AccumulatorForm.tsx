@@ -1,12 +1,12 @@
 "use client";
 
+import { useStore } from "@/lib/contexts/StateProvider";
 import * as Accumulator from "@/lib/state/action/accumulator";
-import { store } from "@/components/StateProvider";
 import { Box, Button, FormControl, Grid, OutlinedInput, Typography } from "@mui/material";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export default function AccumulatorForm() {
-  const { state, dispatch } = useContext(store);
+  const { state, dispatch } = useStore();
   const [num, setNum] = useState("");
   return (
     <Box sx={{ p: 2 }}>

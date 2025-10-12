@@ -59,5 +59,16 @@ export default createTheme({
         }
       ]
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+        sizeLarge: {
+          lineHeight: 1.5,
+          minHeight: 40,
+        },
+      }
+    }
   },
 });

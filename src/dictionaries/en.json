@@ -1,5 +1,7 @@
 {
-    "HelloWorld": "Hello World!",
+    "Hello": "Hello, {{name}}!",
+    "World": "World",
+    "Today": "Today is {{date}}.",
     "PageNotFound": "Page Not Found",
     "BackToHome": "Back to Home"
 }

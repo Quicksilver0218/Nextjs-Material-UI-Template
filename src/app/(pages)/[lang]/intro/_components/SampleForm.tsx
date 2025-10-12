@@ -2,18 +2,19 @@
 
 import { Box, Button, Grid, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import { useActionState, useEffect, useState } from "react";
-import SampleFormHandler from "../_lib/sample-form-handler";
+import { useEffect, useState } from "react";
+import getSampleFormResponse from "../_lib/sample-form-handler";
 import { validateForm } from "../_lib/sample-form-validator";
 import ControlledFileInput from "@/components/ControlledFileInput";
 import SharpCornersButton from "@/components/SharpCornersButton";
 import SharpCornersOutlinedInput from "@/components/SharpCornersOutlinedInput";
+import useAsyncState from "@/lib/hooks/useAsyncState";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);
   const [integer, setInteger] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [serverFailedFields, formAction, pending] = useActionState(SampleFormHandler, new Set());
+  const [serverFailedFields, formAction, pending] = useAsyncState(getSampleFormResponse, new Set());
   const [failedFields, setFailedFields] = useState(new Set());
 
   useEffect(() => {
@@ -53,6 +54,7 @@ export default function SampleForm() {
             <Grid size={{xs: "auto"}} display="flex" alignItems="stretch">
               <SharpCornersButton
                 variant="contained"
+                size="large"
                 color="secondary"
                 component="label"
                 role={undefined}
@@ -89,16 +91,9 @@ export default function SampleForm() {
           </div>
         </Grid>
         <Grid size={{xs: "auto"}}>
-          <Button
-            variant="contained"
-            type="submit"
-            loading={pending}
-            style={{ height: 40 }}
-          >
-            Submit
-          </Button>
+          <Button variant="contained" size="large" type="submit" loading={pending}>Submit</Button>
         </Grid>
       </Grid>
     </Box>
   );
-};
+}

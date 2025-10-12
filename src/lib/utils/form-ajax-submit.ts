@@ -45,9 +45,7 @@ export async function onSubmit(
           if (value instanceof File)
             v = await value
               .arrayBuffer()
-              .then((buffer) =>
-                btoa(String.fromCharCode(...new Uint8Array(buffer)))
-              );
+              .then(buffer => (new Uint8Array(buffer) as unknown as { toBase64: () => string }).toBase64()); // Bypass Next.js type validity check
           else v = value;
           if (!Reflect.has(object, key)) {
             object[key] = v;
@@ -65,9 +63,9 @@ export async function onSubmit(
         request.body = searchString;
         break;
     }
-  fetch(url, request).then((res) => {
+  fetch(url, request).then(res => {
     if (typeof options.success === "function") options.success(res);
-  }).catch((reason) => {
+  }).catch(reason => {
     if (typeof options.fail === "function") options.fail(reason);
   }).finally(() => {
     if (typeof options.complete === "function") options.complete();

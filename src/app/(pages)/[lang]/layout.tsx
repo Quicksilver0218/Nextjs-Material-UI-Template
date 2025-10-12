@@ -1,24 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { locales } from "@/middleware";
+import { DEFAULT_LOCALE, LOCALES } from "@/middleware";
 import { headers } from "next/headers";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { roboto_mono } from "@/lib/fonts";
 import theme from "@/lib/theme";
-import StateProvider from "@/components/StateProvider";
+import { StateProvider } from "@/lib/contexts/StateProvider";
 import "./globals.scss";
+import getDictionary from "@/lib/utils/dictionaries";
+import { TranslationProvider } from "@/lib/contexts/TranslationProvider";
+import { LocaleProvider } from "@/lib/contexts/LocaleProvider";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = new URL((await headers()).get("x-url")!);
   let canonical = url.pathname + url.search;
-  for (const locale of locales)
+  for (const locale of LOCALES)
     if (canonical.startsWith(`/${locale}`)) {
       canonical = canonical.substring(locale.length + 1);
       break;
     }
   const languages: { [key: string]: string } = {};
-  for (const locale of locales)
+  for (const locale of LOCALES)
     languages[locale] = `/${locale}${canonical}`;
 
   return {
@@ -46,15 +49,20 @@ export default async function RootLayout({
   children: React.ReactNode,
   params: Promise<{ lang: string }>,
 }>) {
+  const lang = (await params).lang;
   return (
-    <html lang={(await params).lang}>
+    <html lang={lang}>
       <body className={roboto_mono.variable}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <StateProvider>
-              {children}
-            </StateProvider>
+            <TranslationProvider dict={await getDictionary(lang)} defaultDict={await getDictionary(DEFAULT_LOCALE)}>
+              <LocaleProvider locale={lang}>
+                <StateProvider>
+                  {children}
+                </StateProvider>
+              </LocaleProvider>
+            </TranslationProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

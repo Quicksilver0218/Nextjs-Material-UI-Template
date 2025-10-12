@@ -1,9 +1,11 @@
-import { locales } from "@/middleware";
+import { LOCALES } from "@/middleware";
 import "server-only";
 
-const dictionaries: { [key: string]: Promise<{ [key: string]: string }> } = {};
+export type Dictionary = { [key: string]: string | Dictionary };
 
-for (const locale of locales)
-  dictionaries[locale] = import(`@/dictionaries/${locale}.json`).then((module) => module.default);
+const dictionaries: { [key: string]: Promise<Dictionary> } = {};
+
+for (const locale of LOCALES)
+  dictionaries[locale] = import(`@/dictionaries/${locale}.json`).then(module => module.default);
 
 export default function getDictionary(locale: string) { return dictionaries[locale]; };

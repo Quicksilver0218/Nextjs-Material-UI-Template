@@ -2,21 +2,21 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
 
-export const locales = ["en", "zh"];
-const defaultLocale = "en";
+export const DEFAULT_LOCALE = "en";
+export const LOCALES = [DEFAULT_LOCALE, "zh"];
 
 function getLocale(request: NextRequest) {
   const languages = request.headers.get("accept-language");
   if (!languages)
-    return defaultLocale;
-  return match(new Negotiator({ headers: { "accept-language": languages } }).languages(), locales, defaultLocale);
+    return DEFAULT_LOCALE;
+  return match(new Negotiator({ headers: { "accept-language": languages } }).languages(), LOCALES, DEFAULT_LOCALE);
 }
 
 export async function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  const pathnameHasLocale = LOCALES.some(
+    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
   // Redirect if there is no locale
