@@ -6,6 +6,7 @@ import LocaleSelect from "@/components/LocaleSelect";
 import AccumulatorForm from "./_components/AccumulatorForm";
 import SampleForm from "./_components/SampleForm";
 import ThemeRadio from "@/components/ThemeRadio";
+import "./page.scss";
 
 export const metadata: Metadata = {
   title: "Next.js Material UI Template",

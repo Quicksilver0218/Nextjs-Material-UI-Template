@@ -17,7 +17,7 @@ export default function ThemeRadio() {
       <RadioGroup
         row
         value={mode}
-        onChange={(event) =>
+        onChange={event =>
           setMode(event.target.value as "system" | "light" | "dark")
         }
       >

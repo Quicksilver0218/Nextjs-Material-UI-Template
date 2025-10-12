@@ -2,18 +2,19 @@
 
 import { Box, Button, Grid, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import { useActionState, useEffect, useState } from "react";
-import SampleFormHandler from "../_lib/sample-form-handler";
+import { useEffect, useState } from "react";
+import sampleFormHandler from "../_lib/sample-form-handler";
 import { validateForm } from "../_lib/sample-form-validator";
 import ControlledFileInput from "@/components/ControlledFileInput";
 import SharpCornersButton from "@/components/SharpCornersButton";
 import SharpCornersOutlinedInput from "@/components/SharpCornersOutlinedInput";
+import useAsyncState from "@/lib/hooks/useAsyncState";
 
 export default function SampleForm() {
   const [ssv, setSsv] = useState(true);
   const [integer, setInteger] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [serverFailedFields, formAction, pending] = useActionState(SampleFormHandler, new Set());
+  const [serverFailedFields, formAction, pending] = useAsyncState(sampleFormHandler, new Set());
   const [failedFields, setFailedFields] = useState(new Set());
 
   useEffect(() => {
@@ -101,4 +102,4 @@ export default function SampleForm() {
       </Grid>
     </Box>
   );
-};
+}
