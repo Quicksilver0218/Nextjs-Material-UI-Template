@@ -35,7 +35,11 @@ export default function Root() {
             Next.js
           </Link>{" "}
           with{" "}
-          <Link href="https://mui.com" target="_blank" rel="noreferrer nooppener">
+          <Link
+            href="https://mui.com"
+            target="_blank"
+            rel="noreferrer nooppener"
+          >
             Material UI
           </Link>
           , developed by{" "}
@@ -79,12 +83,12 @@ export default function Root() {
           Server-side Rendering
         </Typography>
         <Typography component="p">
-          This page is rendered at the server side. You can see all the content in
-          the first response.
+          This page is rendered at the server side. You can see all the content
+          in the first response.
         </Typography>
         <Typography component="p">
-          The form below changes the text using AJAX. However, it also updates the
-          search parameter <code>name</code> in the URL in the browser&#39;s
+          The form below changes the text using AJAX. However, it also updates
+          the search parameter <code>name</code> in the URL in the browser&#39;s
           address bar. You can refresh the page after submitting the form or
           manually change the URL to see the server-side rendering result.
         </Typography>
@@ -118,8 +122,8 @@ export default function Root() {
           Internationalization
         </Typography>
         <Typography component="p">
-          Sub-path routing is used for i18n. A redirection will be given to every
-          page request with an URL without locale.
+          Sub-path routing is used for i18n. A redirection will be given to
+          every page request with an URL without locale.
           <br />
           The below message is displayed with translation:
         </Typography>
@@ -143,12 +147,12 @@ export default function Root() {
         <AccumulatorForm />
         <Typography component="p">
           You can see the debug logging in the console if the server is not run
-          with <code>NODE_ENV=production</code>. Please note that the reducer will
-          be called twice for each action in non-production mode.
+          with <code>NODE_ENV=production</code>. Please note that the reducer
+          will be called twice for each action in non-production mode.
         </Typography>
         <Typography component="p">
-          If you do not need the Global State Management System, you can make the
-          changes below.
+          If you do not need the Global State Management System, you can make
+          the changes below.
         </Typography>
         <ul>
           <li>
@@ -182,7 +186,11 @@ export default function Root() {
           Material UI Ready
         </Typography>
         <Typography component="p">
-          <Link href="https://mui.com" target="_blank" rel="noreferrer nooppener">
+          <Link
+            href="https://mui.com"
+            target="_blank"
+            rel="noreferrer nooppener"
+          >
             Material UI
           </Link>{" "}
           is included as a UI component library.
@@ -205,8 +213,8 @@ export default function Root() {
             Delete <code>src/lib/theme.ts</code>.
           </li>
           <li>
-            Uninstall all packages with the name starting with <code>@mui/</code>{" "}
-            or <code>@emotion/</code>.
+            Uninstall all packages with the name starting with{" "}
+            <code>@mui/</code> or <code>@emotion/</code>.
           </li>
           <li>
             Delete or replace the components <code>LocaleSelect.tsx</code>,{" "}
@@ -220,7 +228,7 @@ export default function Root() {
         </Typography>
         <Typography component="p">
           <Link
-            href="https://www.npmjs.com/package/yaml-loader"
+            href="https://github.com/eemeli/yaml-loader"
             target="_blank"
             rel="noreferrer nooppener"
           >
@@ -231,7 +239,8 @@ export default function Root() {
         </Typography>
         <ul>
           <li>
-            Remove all YAML-related configurations in <code>next.config.ts</code>.
+            Remove all YAML-related configurations in{" "}
+            <code>next.config.ts</code>.
           </li>
           <li>
             Delete <code>src/yaml.d.ts</code>.
@@ -325,7 +334,7 @@ export default function Root() {
         <ul>
           <li>
             <Link
-              href="https://www.npmjs.com/package/negotiator"
+              href="https://github.com/jshttp/negotiator"
               target="_blank"
               rel="noreferrer nooppener"
             >
@@ -384,11 +393,11 @@ export default function Root() {
         <Typography component="p">
           All the default directories from Next.js are kept. The{" "}
           <Link
-            href="https://nextjs.org/docs/app/getting-started/project-structure#src-directory"
+            href="https://nextjs.org/docs/app/getting-started/project-structure#src-folder"
             target="_blank"
             rel="noreferrer nooppener"
           >
-            <code>/src</code> directory
+            <code>src</code> folder
           </Link>{" "}
           and{" "}
           <Link
@@ -426,8 +435,8 @@ export default function Root() {
           >
             route group
           </Link>{" "}
-          for all pages. Other route groups (e.g. <code>(api)</code>) can be added
-          under <code>src/app</code>.
+          for all pages. Other route groups (e.g. <code>(api)</code>) can be
+          added under <code>src/app</code>.
         </Typography>
         <Typography variant="h5" component="h5">
           src/dictionaries
@@ -462,8 +471,9 @@ export default function Root() {
             Redux
           </Link>{" "}
           design pattern. You may customize <i>state</i>, <i>actions</i> and{" "}
-          <i>reducers</i> respectively in <i>index.ts</i>, <i>action</i> and{" "}
-          <i>reducer.ts</i>. Please note that it is not Redux.
+          <i>reducers</i> respectively in <code>index.ts</code>,{" "}
+          <code>action/</code> and <code>reducer.ts</code>. Please note that it
+          is not Redux.
         </Typography>
         <Box sx={{ marginTop: 2 }}>
           <hr />
@@ -486,7 +496,8 @@ export default function Root() {
         <ol>
           <li>
             Use Pascal case for React component files except pages so that they
-            can be consistent with Material UI. e.g. <code>SampleForm.tsx</code>.
+            can be consistent with Material UI. e.g. <code>SampleForm.tsx</code>
+            .
           </li>
           <li>
             Use hyphen delimited strings with lower case for other files. e.g.{" "}
@@ -498,16 +509,18 @@ export default function Root() {
         </Typography>
         <ol>
           <li>
-            Use 2 or 4 spaces indentation. The number of spaces of an indentation
-            level should be consistent within the same file.
+            Use 2 or 4 spaces indentation. The number of spaces of an
+            indentation level should be consistent within the same file.
           </li>
-          <li>Add an empty line between classes or functions on declaration.</li>
           <li>
-            Place <code>&#123;</code> at the same line of classes or functions on
-            declaration, and add 1 space in front of them. e.g.
+            Add an empty line between classes or functions on declaration.
+          </li>
+          <li>
+            Place <code>&#123;</code> at the same line of classes or functions
+            on declaration, and add 1 space in front of them. e.g.
             <br />
-            use <code>class A &#123;</code> instead of <code>class A&#123;</code>{" "}
-            or
+            use <code>class A &#123;</code> instead of{" "}
+            <code>class A&#123;</code> or
             <br />
             <code>
               class A<br />
@@ -516,8 +529,8 @@ export default function Root() {
             .
           </li>
           <li>
-            Add 1 space in front of <code>(</code> in the condition expression of
-            flow controls. e.g. use <code>if (a === b)</code> instead of{" "}
+            Add 1 space in front of <code>(</code> in the condition expression
+            of flow controls. e.g. use <code>if (a === b)</code> instead of{" "}
             <code>if(a === b)</code>.
           </li>
           <li>
@@ -554,9 +567,10 @@ export default function Root() {
         </Typography>
         <ol>
           <li>
-            Add 1 space on each side of assignment operators (e.g. <code>=</code>,{" "}
-            <code>+=</code>, <code>-=</code> etc.) and <code>=&gt;</code> if there
-            are no line breaks or spaces at that place.
+            Add 1 space on each side of assignment operators (e.g.{" "}
+            <code>=</code>, <code>+=</code>, <code>-=</code> etc.) and{" "}
+            <code>=&gt;</code> if there are no line breaks or spaces at that
+            place.
           </li>
         </ol>
         <Typography variant="h5" component="h5">
@@ -576,17 +590,20 @@ export default function Root() {
           </li>
           <li>
             Use <code>Subject-variant</code> syntax for element classes. e.g.{" "}
-            <code>List-dark</code> contains properties of a list with dark theme,
-            and <code>List-light</code> contains that with light theme. Common
-            properties are included in <code>List</code>. Then the element may
-            look like{" "}
-            <code>&lt;div class=&quot;List List-dark&quot;&gt;&lt;/div&gt;</code>.
+            <code>List-dark</code> contains properties of a list with dark
+            theme, and <code>List-light</code> contains that with light theme.
+            Common properties are included in <code>List</code>. Then the
+            element may look like{" "}
+            <code>
+              &lt;div class=&quot;List List-dark&quot;&gt;&lt;/div&gt;
+            </code>
+            .
           </li>
           <li>
-            If the properties can be changed, avoid adding them to the class name.
-            e.g. consider using <code>Text-highlight</code> instead of{" "}
-            <code>Text-background-yellow</code>, except it always has and only has
-            the yellow background property.
+            If the properties can be changed, avoid adding them to the class
+            name. e.g. consider using <code>Text-highlight</code> instead of{" "}
+            <code>Text-background-yellow</code>, except it always has and only
+            has the yellow background property.
           </li>
           <li>
             Use <code>Parent-Child</code> syntax for element classes. e.g.{" "}
@@ -634,8 +651,8 @@ export default function Root() {
             Use the bracket notation instead of the dot notation for accessing
             classes in imported CSS modules. e.g. use{" "}
             <code>styles[&quot;class&quot;]</code> instead of{" "}
-            <code>styles.class</code>. If the class name contains <code>-</code>,
-            only the bracket notation is available. So, always use the bracket
+            <code>styles.class</code>. If the class name contains <code>-</code>
+            , only the bracket notation is available. So, always use the bracket
             notation for consistency.
           </li>
           <li>
