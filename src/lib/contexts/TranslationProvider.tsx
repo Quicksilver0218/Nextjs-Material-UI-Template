@@ -7,7 +7,7 @@ function fillArgs(text: string, args: [string, string][]) {
   const [key, value] = args.shift()!;
   let arr = text.split(`{{${key}}}`);
   if (args.length)
-    arr = arr.map(item => fillArgs(item, Array.from(args)));
+    arr = arr.map(item => fillArgs(item, args.concat()));
   return arr.join(value);
 }
 
