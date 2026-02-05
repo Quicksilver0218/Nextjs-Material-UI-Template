@@ -16,7 +16,7 @@ type Callback = (key: string, args?: { [key: string]: string }) => string;
 const context = createContext<Callback>(((key: string) => key));
 
 export const TranslationProvider = ({ children, dict, defaultDict }: PropsWithChildren<{ dict: Dictionary, defaultDict: Dictionary }>) => {
-  const t = useCallback(((key, args) => {
+  const t = useCallback((key, args) => {
     const keys = key.split(".");
     let text = dict[keys[0]];
     let defaultText = defaultDict[keys[0]];
@@ -37,7 +37,7 @@ export const TranslationProvider = ({ children, dict, defaultDict }: PropsWithCh
     if (!args)
       return text as string;
     return fillArgs(text as string, Object.entries(args));
-  }) as Callback, [dict, defaultDict]);
+  }, [dict, defaultDict]) as Callback;
   const Provider = context.Provider;
 
   return <Provider value={t}>{children}</Provider>;

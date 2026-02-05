@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DEFAULT_LOCALE, LOCALES } from "@/middleware";
+import { DEFAULT_LOCALE, LOCALES } from "@/proxy";
 import { headers } from "next/headers";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { ThemeProvider } from "@mui/material/styles";

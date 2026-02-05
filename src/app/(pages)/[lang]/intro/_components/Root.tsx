@@ -52,7 +52,7 @@ export default function Root() {
           </Link>
           .
         </Typography>
-        <Typography component="p">Next.js Version: 15.5.6</Typography>
+        <Typography component="p">Next.js Version: 16.1.6</Typography>
       </header>
       <Box sx={{ marginTop: 2 }}>
         <hr />

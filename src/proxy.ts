@@ -12,7 +12,7 @@ function getLocale(request: NextRequest) {
   return match(new Negotiator({ headers: { "accept-language": languages } }).languages(), LOCALES, DEFAULT_LOCALE);
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
   const pathnameHasLocale = LOCALES.some(

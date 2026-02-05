@@ -16,7 +16,7 @@ export default function ControlledFileInput(props: Omit<InputHTMLAttributes<HTML
         dataTransfer.items.add(file);
       finalRef.current.files = dataTransfer.files;
     }
-  }, [files]);
+  }, [finalRef, files]);
 
   return <input type="file" ref={finalRef} onChange={e => setFiles([...e.target.files!])} {...rest} />;
 };

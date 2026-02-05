@@ -1,4 +1,4 @@
-import { LOCALES } from "@/middleware";
+import { LOCALES } from "@/proxy";
 import "server-only";
 
 export type Dictionary = { [key: string]: string | Dictionary };
