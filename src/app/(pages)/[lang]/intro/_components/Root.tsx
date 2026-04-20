@@ -52,7 +52,7 @@ export default function Root() {
           </Link>
           .
         </Typography>
-        <Typography component="p">Next.js Version: 16.1.6</Typography>
+        <Typography component="p">Next.js Version: 16.1.7</Typography>
       </header>
       <Box sx={{ marginTop: 2 }}>
         <hr />
@@ -115,7 +115,7 @@ export default function Root() {
           </Link>{" "}
           are supported.
         </Typography>
-        <Typography variant="h5" p={2} className={styles["scss-demo-text"]}>
+        <Typography variant="h5" sx={{ p: 2 }} className={styles["scss-demo-text"]}>
           SCSS is used to style this text.
         </Typography>
         <Typography variant="h5" component="h5">
@@ -127,11 +127,11 @@ export default function Root() {
           <br />
           The below message is displayed with translation:
         </Typography>
-        <Grid container spacing={2} p={2}>
+        <Grid container spacing={2} sx={{ p: 2 }}>
           <Grid size={{ xs: "auto" }}>
             <LocaleSelect />
           </Grid>
-          <Grid size={{ xs: "auto" }} display="flex" alignItems="center">
+          <Grid container size={{ xs: "auto" }} sx={{ alignItems: "center"}}>
             <Typography variant="subtitle1" color="secondary">
               {t("Today", { date })}
             </Typography>
@@ -243,7 +243,7 @@ export default function Root() {
             <code>next.config.ts</code>.
           </li>
           <li>
-            Delete <code>src/yaml.d.ts</code>.
+            Delete <code>src/types/yaml.d.ts</code>.
           </li>
           <li>
             Uninstall <code>yaml-loader</code>.
@@ -679,7 +679,7 @@ export default function Root() {
       <footer>
         <Typography component="p">
           <small>
-            Copyright © 2025 Quicksilver0218.
+            Copyright © 2026 Quicksilver0218.
             <br />
             Licensed under the MIT License.
           </small>

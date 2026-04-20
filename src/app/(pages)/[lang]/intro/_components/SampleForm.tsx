@@ -2,7 +2,7 @@
 
 import { Box, Button, Grid, Switch, TextField, Typography } from "@mui/material";
 import { CloudUpload } from "@mui/icons-material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import getSampleFormResponse from "../_lib/sample-form-handler";
 import { validateForm } from "../_lib/sample-form-validator";
 import ControlledFileInput from "@/components/ControlledFileInput";
@@ -15,11 +15,13 @@ export default function SampleForm() {
   const [integer, setInteger] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [serverFailedFields, formAction, pending] = useAsyncState(getSampleFormResponse, new Set());
+  const [lastServerFailedFields, setLastServerFailedFields] = useState<Set<string>>();
   const [failedFields, setFailedFields] = useState(new Set());
 
-  useEffect(() => {
+  if (serverFailedFields !== lastServerFailedFields) {
+    setLastServerFailedFields(serverFailedFields);
     setFailedFields(serverFailedFields);
-  }, [serverFailedFields]);
+  }
   
   return (
     <Box
@@ -51,7 +53,7 @@ export default function SampleForm() {
         </Grid>
         <Grid size={{xs: "grow"}}>
           <Grid container>
-            <Grid size={{xs: "auto"}} display="flex" alignItems="stretch">
+            <Grid container size={{xs: "auto"}} sx={{ alignItems: "stretch" }}>
               <SharpCornersButton
                 variant="contained"
                 size="large"
