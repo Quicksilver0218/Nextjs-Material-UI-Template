@@ -1,72 +1,94 @@
-import { FormEvent } from "react";
+import { SubmitEvent } from "react";
 
-export async function onSubmit(
-  e: FormEvent,
+export async function onSubmit<T extends FormData | object | string>(
+  e: SubmitEvent,
   options: {
-    beforeSend?: (form: HTMLFormElement) => void | false;
-    success?: (res: Response) => void;
-    fail?: (err: Error) => void;
+    preprocess?: (form: HTMLFormElement) => T | undefined;
+    success?: (res: Response, formData: T) => Promise<void> | void;
+    fail?: (err: Error) => Promise<void> | void;
     complete?: () => void;
   } = {}
 ) {
   e.preventDefault();
   const form = e.target as HTMLFormElement;
   if (!form.checkValidity()) return;
-  if (
-    typeof options.beforeSend === "function" &&
-    options.beforeSend(form) === false
-  )
-    return;
-  const formData = new FormData(form);
+  const formData = typeof options.preprocess === "function" ? options.preprocess(e.target) : new FormData(form);
+  if (!formData) return;
   const method = form.method?.toUpperCase() || "GET";
-  const enctype = form.enctype || "application/x-www-form-urlencoded";
-  const searchString = new URLSearchParams(
-    formData
-      .entries()
-      .filter(([, value]) => typeof value === "string")
-      .toArray() as [string, string][]
-  ).toString();
-  const url =
-    (form.action || window.location.href) +
-    (method === "GET" ? `?${searchString}` : "");
+  const enctype = form.getAttribute("enctype") || "application/x-www-form-urlencoded;charset=UTF-8";
+  let url = form.action || window.location.href;
   const request: RequestInit = { method };
-  if (method !== "GET")
+  if (method === "GET") {
+    url += "?";
+    if (typeof formData === "string")
+      url += formData;
+    else if (formData instanceof FormData)
+      url += new URLSearchParams(
+        formData
+          .entries()
+          .filter(([, value]) => typeof value === "string")
+          .toArray() as [string, string][]
+      ).toString();
+    else
+      url += new URLSearchParams(Object.entries(formData)).toString();
+  } else
     switch (enctype) {
       case "multipart/form-data":
-        request.body = formData;
+        if (typeof formData === "string" || formData instanceof FormData)
+          request.body = formData;
+        else {
+          request.body = new FormData();
+          for (const key in formData)
+            if (formData[key] != null)
+              if (typeof formData[key] === "object")
+                request.body.append(key, JSON.stringify(formData[key]));
+              else
+                request.body.append(key, String(formData[key]));
+        }
         break;
       case "application/json":
-        request.headers = {
-          "Content-Type": "application/json",
-        };
-        const object: { [key: string]: unknown } = {};
-        for (const [key, value] of formData.entries()) {
-          let v;
-          if (value instanceof File)
-            v = await value
-              .arrayBuffer()
-              .then(buffer => (new Uint8Array(buffer) as unknown as { toBase64: () => string }).toBase64()); // Bypass Next.js type validity check
-          else v = value;
-          if (!Reflect.has(object, key)) {
-            object[key] = v;
-            return;
-          }
-          if (!Array.isArray(object[key])) object[key] = [object[key]];
-          (object[key] as unknown[]).push(v);
-        };
-        request.body = JSON.stringify(object);
+        request.headers = { "Content-Type": "application/json" };
+        if (typeof formData === "string")
+          request.body = formData;
+        else if (formData instanceof FormData) {
+          const object: { [key: string]: unknown } = {};
+          for (const [key, value] of formData.entries()) {
+            let v;
+            if (value instanceof File)
+              v = await value
+                .arrayBuffer()
+                .then(buffer => new Uint8Array(buffer).toBase64());
+            else v = value;
+            if (!Reflect.has(object, key)) {
+              object[key] = v;
+              continue;
+            }
+            if (!Array.isArray(object[key])) object[key] = [object[key]];
+            (object[key] as unknown[]).push(v);
+          };
+          request.body = JSON.stringify(object);
+        } else
+          request.body = JSON.stringify(formData);
         break;
       default:
-        request.headers = {
-          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        };
-        request.body = searchString;
+        request.headers = { "Content-Type": enctype };
+        if (typeof formData === "string")
+          request.body = formData;
+        else if (formData instanceof FormData)
+          request.body = new URLSearchParams(
+            formData
+              .entries()
+              .filter(([, value]) => typeof value === "string")
+              .toArray() as [string, string][]
+          ).toString();
+        else
+          request.body = new URLSearchParams(Object.entries(formData)).toString();
         break;
     }
-  fetch(url, request).then(res => {
-    if (typeof options.success === "function") options.success(res);
-  }).catch(reason => {
-    if (typeof options.fail === "function") options.fail(reason);
+  fetch(url, request).then(async res => {
+    if (options.success) await options.success(res, formData as T);
+  }).catch(async err => {
+    if (options.fail) await options.fail(err);
   }).finally(() => {
     if (typeof options.complete === "function") options.complete();
   });
