@@ -1,5 +1,6 @@
-import rules from "./sample-form-validation-rules.yml";
 import { Rule, Validator } from "@quicksilver0218/object-validator";
+
+import rules from "./sample-form-validation-rules.yml";
 
 const validator = new Validator(rules as Rule[]);
 

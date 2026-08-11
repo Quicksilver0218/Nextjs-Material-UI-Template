@@ -1,9 +1,11 @@
 "use client";
 
-import { useTranslation } from "@/lib/contexts/TranslationProvider";
-import { Typography, Button, Stack } from "@mui/material";
-import { Home } from "@mui/icons-material";
 import Link from "next/link";
+
+import { Home } from "@mui/icons-material";
+import { Typography, Button, Stack } from "@mui/material";
+
+import { useTranslation } from "@/lib/contexts/TranslationProvider";
 
 export default function Root() {
   const t = useTranslation();

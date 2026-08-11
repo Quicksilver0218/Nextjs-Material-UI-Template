@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
+
+import { Box, Button, FormControl, Grid, OutlinedInput, Typography } from "@mui/material";
+
 import { useStore } from "@/lib/contexts/StateProvider";
 import * as Accumulator from "@/lib/state/action/accumulator";
-import { Box, Button, FormControl, Grid, OutlinedInput, Typography } from "@mui/material";
-import { useState } from "react";
 
 export default function AccumulatorForm() {
   const { state, dispatch } = useStore();

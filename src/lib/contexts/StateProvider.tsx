@@ -1,8 +1,9 @@
 "use client";
 
 import { createContext, Dispatch, PropsWithChildren, useContext, useReducer } from "react";
-import IAction from "@/lib/state/action";
+
 import { IState, initialState } from "@/lib/state";
+import IAction from "@/lib/state/action";
 import reducer from "@/lib/state/reducer";
 
 const store = createContext(

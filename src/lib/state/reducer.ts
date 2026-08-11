@@ -4,7 +4,7 @@ import * as Accumulator from "./action/accumulator";
 import { combineReducers } from "./utils";
 
 // Implement your reducers here
-function accumulatorReducer (accumulator: number, action: IAction) {
+function accumulatorReducer(accumulator: number, action: IAction) {
   switch (action.type) {
     case Accumulator.ActionType.INCREMENT:
       return accumulator + 1;
@@ -19,7 +19,7 @@ function accumulatorReducer (accumulator: number, action: IAction) {
   }
 };
 
-function changeCountReducer (changeCount: number, action: IAction) {
+function changeCountReducer(changeCount: number, action: IAction) {
   switch (action.type) {
     case Accumulator.ActionType.INCREMENT:
     case Accumulator.ActionType.DECREMENT:
@@ -32,20 +32,19 @@ function changeCountReducer (changeCount: number, action: IAction) {
   }
 };
 
+const reducerMap = {
+  accumulator: accumulatorReducer,
+  changeCount: changeCountReducer,
+};
+
 const dev = process.env.NODE_ENV !== "production";
 const reducer = dev
   ? (state: IState, action: IAction) => {
     console.log("%c before", "color: #ff6666; font-weight: bold;", state);
     console.log("%c action", "color: orange; font-weight: bold;", action);
-    const newState = combineReducers({
-      accumulator: accumulatorReducer,
-      changeCount: changeCountReducer,
-    })(state, action);
+    const newState = combineReducers<IState>(reducerMap)(state, action);
     console.log("%c after", "color: #44bb44; font-weight: bold;", newState);
     return newState;
-  } : combineReducers({
-    accumulator: accumulatorReducer,
-    changeCount: changeCountReducer,
-  });
+  } : combineReducers<IState>(reducerMap);
 
 export default reducer;

@@ -1,7 +1,10 @@
+"use client";
+
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
+
 import { deleteUndefinedKeys } from "../utils/request-utils";
 
 export type SearchParams = { [key: string]: string | string[] | undefined };

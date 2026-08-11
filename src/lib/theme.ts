@@ -1,6 +1,7 @@
 "use client";
 
 import { createTheme } from "@mui/material/styles";
+
 import { roboto } from "./fonts";
 
 export default createTheme({
@@ -69,6 +70,24 @@ export default createTheme({
           minHeight: 40,
         },
       }
-    }
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          variants: [
+            {
+              props: { variant: "elevation" },
+              style: ({ theme }) => ({
+                ...theme.applyStyles("light", {
+                  borderWidth: 1,
+                  borderColor: "var(--mui-palette-divider)",
+                  borderStyle: "solid",
+                }),
+              }),
+            },
+          ],
+        },
+      },
+    },
   },
 });

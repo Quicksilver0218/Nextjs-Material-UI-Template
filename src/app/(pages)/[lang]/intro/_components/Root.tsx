@@ -1,15 +1,19 @@
 "use client";
 
-import styles from "./Root.module.scss";
-import { Box, Container, Grid, Link, Typography } from "@mui/material";
-import LocaleSelect from "@/components/LocaleSelect";
-import AccumulatorForm from "./AccumulatorForm";
-import SampleForm from "./SampleForm";
-import ThemeRadio from "@/components/ThemeRadio";
-import { useTranslation } from "@/lib/contexts/TranslationProvider";
-import { useLocale } from "@/lib/contexts/LocaleProvider";
 import { useMemo } from "react";
+
+import { Container, Divider, Grid, Link, Typography } from "@mui/material";
+
+import LocaleSelect from "@/components/LocaleSelect";
+import ThemeRadio from "@/components/ThemeRadio";
+import ThemeSwitch from "@/components/ThemeSwitch";
+import { useLocale } from "@/lib/contexts/LocaleProvider";
+import { useTranslation } from "@/lib/contexts/TranslationProvider";
+
+import AccumulatorForm from "./AccumulatorForm";
 import NameForm from "./NameForm";
+import styles from "./Root.module.scss";
+import SampleForm from "./SampleForm";
 
 export default function Root() {
   const t = useTranslation();
@@ -52,11 +56,9 @@ export default function Root() {
           </Link>
           .
         </Typography>
-        <Typography component="p">Next.js Version: 16.1.7</Typography>
+        <Typography component="p">Next.js Version: 16.4.3</Typography>
       </header>
-      <Box sx={{ marginTop: 2 }}>
-        <hr />
-      </Box>
+      <Divider sx={{ mt: 2 }} />
       <main>
         <Typography variant="h4" component="h4">
           Features
@@ -131,7 +133,7 @@ export default function Root() {
           <Grid size={{ xs: "auto" }}>
             <LocaleSelect />
           </Grid>
-          <Grid container size={{ xs: "auto" }} sx={{ alignItems: "center"}}>
+          <Grid container size={{ xs: "auto" }} sx={{ alignItems: "center" }}>
             <Typography variant="subtitle1" color="secondary">
               {t("Today", { date })}
             </Typography>
@@ -195,7 +197,10 @@ export default function Root() {
           </Link>{" "}
           is included as a UI component library.
         </Typography>
-        <ThemeRadio />
+        <Grid container spacing={2} sx={{ alignItems: "end" }}>
+          <ThemeRadio />
+          <ThemeSwitch />
+        </Grid>
         <Typography component="p">
           If you do not need Material UI, you can make the changes below.
         </Typography>
@@ -218,9 +223,13 @@ export default function Root() {
           </li>
           <li>
             Delete or replace the components <code>LocaleSelect.tsx</code>,{" "}
+            <code>CooldownButton.tsx</code>, {" "}
+            <code>DialogWithCloseButton.tsx</code>, {" "}
+            <code>LocaleSelect.tsx</code>, {" "}
             <code>SharpCornersButton.tsx</code>,{" "}
-            <code>SharpCornersOutlinedInput.tsx</code> and{" "}
-            <code>ThemeRadio.tsx</code> under <code>src/components</code>.
+            <code>SharpCornersOutlinedInput.tsx</code>,{" "}
+            <code>ThemeRadio.tsx</code> and{" "}
+            <code>ThemeSwitch.tsx</code> under <code>src/components</code>.
           </li>
         </ul>
         <Typography variant="h5" component="h5">
@@ -249,9 +258,7 @@ export default function Root() {
             Uninstall <code>yaml-loader</code>.
           </li>
         </ul>
-        <Box sx={{ marginTop: 2 }}>
-          <hr />
-        </Box>
+        <Divider sx={{ mt: 2 }} />
         <Typography variant="h4" component="h4">
           Compilers, Libraries and Frameworks
         </Typography>
@@ -384,9 +391,7 @@ export default function Root() {
             </Link>
           </li>
         </ul>
-        <Box sx={{ marginTop: 2 }}>
-          <hr />
-        </Box>
+        <Divider sx={{ mt: 2 }} />
         <Typography variant="h4" component="h4">
           Directory Structure
         </Typography>
@@ -475,9 +480,7 @@ export default function Root() {
           <code>action/</code> and <code>reducer.ts</code>. Please note that it
           is not Redux.
         </Typography>
-        <Box sx={{ marginTop: 2 }}>
-          <hr />
-        </Box>
+        <Divider sx={{ mt: 2 }} />
         <Typography variant="h4" component="h4">
           Coding Styles and Naming Conventions
         </Typography>
@@ -673,9 +676,7 @@ export default function Root() {
           </li>
         </ol>
       </main>
-      <Box sx={{ marginTop: 2 }}>
-        <hr />
-      </Box>
+      <Divider sx={{ mt: 2 }} />
       <footer>
         <Typography component="p">
           <small>

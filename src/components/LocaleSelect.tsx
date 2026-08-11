@@ -1,8 +1,9 @@
 "use client";
 
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+
 import { useLocale } from "@/lib/contexts/LocaleProvider";
 import useNavigation from "@/lib/hooks/useNavigation";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 export default function LocaleSelect() {
   const locale = useLocale();

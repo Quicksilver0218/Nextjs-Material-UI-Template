@@ -1,5 +1,6 @@
-import { LOCALES } from "@/proxy";
 import "server-only";
+
+import { LOCALES } from "@/proxy";
 
 export type Dictionary = { [key: string]: string | Dictionary };
 

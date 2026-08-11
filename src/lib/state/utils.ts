@@ -1,4 +1,5 @@
 import { Reducer } from "react";
+
 import IAction from "./action";
 
 export function combineReducers<T> (reducerMap: {

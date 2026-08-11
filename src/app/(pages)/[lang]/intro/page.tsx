@@ -1,8 +1,9 @@
 import { Metadata } from "next";
+
 import Root from "./_components/Root";
-import "./page.scss";
 import { NameProvider } from "./_lib/contexts/NameProvider";
 import getNameFormResponse from "./_lib/name-form-handler";
+import "./page.scss";
 
 export const metadata: Metadata = {
   title: "Next.js Material UI Template",

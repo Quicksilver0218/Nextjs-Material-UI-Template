@@ -1,16 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { DEFAULT_LOCALE, LOCALES } from "@/proxy";
 import { headers } from "next/headers";
+
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+
+import { LocaleProvider } from "@/lib/contexts/LocaleProvider";
+import { StateProvider } from "@/lib/contexts/StateProvider";
+import { TranslationProvider } from "@/lib/contexts/TranslationProvider";
 import { roboto_mono } from "@/lib/fonts";
 import theme from "@/lib/theme";
-import { StateProvider } from "@/lib/contexts/StateProvider";
-import "./globals.scss";
 import getDictionary from "@/lib/utils/dictionaries";
-import { TranslationProvider } from "@/lib/contexts/TranslationProvider";
-import { LocaleProvider } from "@/lib/contexts/LocaleProvider";
+import { DEFAULT_LOCALE, LOCALES } from "@/proxy";
+
+import "./globals.scss";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = new URL((await headers()).get("x-url")!);

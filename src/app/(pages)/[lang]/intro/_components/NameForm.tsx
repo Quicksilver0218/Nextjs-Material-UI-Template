@@ -1,7 +1,10 @@
+import { useState } from "react";
+
+import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
+
 import { useTranslation } from "@/lib/contexts/TranslationProvider";
 import useNavigation from "@/lib/hooks/useNavigation";
-import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+
 import { useName } from "../_lib/contexts/NameProvider";
 
 function Form({ nameState }: { nameState: [string | undefined] }) {
