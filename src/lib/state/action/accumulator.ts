@@ -2,12 +2,13 @@
 
 import IAction from ".";
 
-export enum ActionType {
-  INCREMENT = "Increment",
-  DECREMENT = "Decrement",
-  RESET = "Reset",
-  SET = "Set",
-};
+export const ActionType = {
+  INCREMENT: "Increment",
+  DECREMENT: "Decrement",
+  RESET: "Reset",
+  SET: "Set",
+} as const;
+export type ActionType = typeof ActionType[keyof typeof ActionType];
 
 export interface SetAction extends IAction {
   num: number;

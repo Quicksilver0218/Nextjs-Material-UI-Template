@@ -1,7 +1,7 @@
-import { FormEvent } from "react";
+import { SubmitEvent } from "react";
 
 export async function onSubmit(
-  e: FormEvent,
+  e: SubmitEvent,
   options: {
     beforeSend?: (form: HTMLFormElement) => void | false;
     success?: (res: Response) => void;
